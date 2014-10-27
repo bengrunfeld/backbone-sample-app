@@ -10,9 +10,14 @@ var DisplayView = Backbone.View.extend({
 	el: $('.example-content'),
 	template: _.template( $('#example-target').html() ),
 
+	initialize: function(options){
+		console.log(options.model);
+	},
+
 	render: function(){
 		var exampleTemplate = this.template(this.model.toJSON());
 		this.$el.html(exampleTemplate);
+		return this;
 	}
 });
 
@@ -26,7 +31,7 @@ AppRouter = Backbone.Router.extend({
 // Routing methods
 app_router = new AppRouter();
 app_router.on('route:somefunc', function(id){
-	alert('hi there ' + id);
+//	alert('hi there ' + id);
 });
 
 Backbone.history.start();
